@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en-NZ" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SentryOne — Legal Information</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root, [data-theme="dark"] {
+      --bg:#080e18; --bg-2:#0c1422; --surface:#101c2e; --surface-2:#162337;
+      --ink:#e8f0fb; --ink-2:#9ab0cc; --muted:#4d6480;
+      --line:#1a2d45; --line-2:#203550;
+      --cyan:#00d4ff; --cyan-dim:rgba(0,212,255,0.09); --cyan-glow:rgba(0,212,255,0.20);
+      --amber:#ffb547; --amber-dim:rgba(255,181,71,0.10);
+      --red:#ff4d6a; --red-dim:rgba(255,77,106,0.10);
+      --green:#00e5a0; --green-dim:rgba(0,229,160,0.08);
+      --nav-bg:rgba(8,14,24,0.88); --scanline:rgba(0,0,0,0.04); --max:1100px;
+    }
+    [data-theme="light"] {
+      --bg:#f4f7fb; --bg-2:#eaf0f8; --surface:#ffffff; --surface-2:#f0f5fc;
+      --ink:#0d1829; --ink-2:#3a5068; --muted:#7a96b2;
+      --line:#d0dcea; --line-2:#baccde;
+      --cyan:#0099cc; --cyan-dim:rgba(0,153,204,0.09); --cyan-glow:rgba(0,153,204,0.18);
+      --amber:#c97d00; --amber-dim:rgba(201,125,0,0.09);
+      --red:#d63250; --red-dim:rgba(214,50,80,0.09);
+      --green:#00956a; --green-dim:rgba(0,149,106,0.09);
+      --nav-bg:rgba(244,247,251,0.92); --scanline:transparent;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:'IBM Plex Sans',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.7;font-size:15px;overflow-x:hidden;transition:background .25s,color .25s}
+    a{color:var(--cyan);text-decoration:none} a:hover{text-decoration:underline}
+    body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 2px,var(--scanline) 2px,var(--scanline) 4px);pointer-events:none;z-index:9999}
+    nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:0 48px;height:60px;display:flex;align-items:center;justify-content:space-between;background:var(--nav-bg);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--line);transition:background .25s,border-color .25s}
+    .nav-brand{display:flex;align-items:center;gap:11px}
+    .nav-logo{width:30px;height:30px;border:1px solid var(--cyan);border-radius:6px;display:flex;align-items:center;justify-content:center;box-shadow:0 0 10px var(--cyan-glow);flex-shrink:0}
+    .nav-logo svg{width:16px;height:16px;fill:var(--cyan)}
+    .nav-name{font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;color:var(--ink);letter-spacing:.04em}
+    .nav-links{display:flex;align-items:center;gap:36px;list-style:none}
+    .nav-links a{font-size:12.5px;font-weight:500;color:var(--ink-2);letter-spacing:.04em;transition:color .15s}
+    .nav-links a:hover,.nav-links a.active{color:var(--cyan)}
+    .nav-cta{display:flex;align-items:center;gap:10px}
+    .theme-toggle{width:36px;height:36px;border-radius:6px;border:1px solid var(--line-2);background:transparent;color:var(--ink-2);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .18s;flex-shrink:0}
+    .theme-toggle:hover{border-color:var(--cyan);color:var(--cyan)}
+    .theme-toggle svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+    .icon-moon{display:block}.icon-sun{display:none}
+    [data-theme="light"] .icon-moon{display:none}[data-theme="light"] .icon-sun{display:block}
+    .btn{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;font-weight:600;letter-spacing:.04em;padding:8px 20px;border-radius:4px;cursor:pointer;transition:all .18s;border:none;font-family:'IBM Plex Sans',sans-serif}
+    .btn-ghost{background:transparent;color:var(--ink-2);border:1px solid var(--line-2)}.btn-ghost:hover{border-color:var(--cyan);color:var(--cyan)}
+    .btn-primary{background:var(--cyan);color:#fff;box-shadow:0 0 20px var(--cyan-glow)}.btn-primary:hover{filter:brightness(1.1)}
+
+    .page-hero{padding:110px 48px 64px;position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+    .page-hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(ellipse 90% 100% at 70% 50%,black 20%,transparent 80%);opacity:.5;transition:opacity .25s}
+    [data-theme="light"] .page-hero::before{opacity:.25}
+    .page-hero::after{content:'';position:absolute;top:-40%;left:-10%;width:600px;height:600px;background:radial-gradient(circle,var(--cyan-dim) 0%,transparent 60%);pointer-events:none}
+    .page-hero-inner{max-width:var(--max);margin:0 auto;position:relative;z-index:1}
+    .doc-tag{display:inline-flex;align-items:center;gap:8px;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--cyan);border:1px solid var(--cyan-dim);padding:5px 12px;border-radius:3px;margin-bottom:22px;background:var(--cyan-dim)}
+    .doc-tag::before{content:'//';opacity:.6}
+    h1{font-family:'Syne',sans-serif;font-size:clamp(2.4rem,5vw,3.8rem);line-height:1.03;font-weight:800;letter-spacing:-.02em;margin-bottom:14px;color:var(--ink)}
+    .hero-sub{color:var(--ink-2);max-width:640px;font-size:15px;line-height:1.65;margin-bottom:28px;font-weight:300}
+    .meta-strip{display:flex;flex-wrap:wrap;gap:28px}
+    .meta-item{font-size:12px;color:var(--muted)}.meta-item strong{display:block;color:var(--ink-2);font-size:13px;margin-bottom:2px;font-weight:500}
+    .notice{background:var(--cyan-dim);border:1px solid rgba(0,153,204,.18);border-left:3px solid var(--cyan);border-radius:6px;padding:14px 18px;margin-bottom:32px;font-size:13.5px;color:var(--ink-2);line-height:1.6}
+    .wrap{max-width:var(--max);margin:0 auto;padding:48px 48px 80px}
+    .layout{display:grid;grid-template-columns:240px minmax(0,1fr);gap:44px;align-items:start}
+    .sidebar{position:sticky;top:80px}
+    .nav-label{font-family:'IBM Plex Mono',monospace;font-size:9.5px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:12px;padding-left:2px}
+    .sidebar-nav{list-style:none;border-left:1px solid var(--line-2)}
+    .sidebar-nav li a{display:block;padding:8px 16px;font-size:13px;color:var(--ink-2);border-left:2px solid transparent;margin-left:-1px;transition:all .15s;line-height:1.4;font-weight:400}
+    .sidebar-nav li a:hover{color:var(--cyan);border-left-color:var(--cyan);background:var(--cyan-dim);text-decoration:none}
+    .sidebar-note{margin-top:24px;padding:14px 16px;background:var(--amber-dim);border:1px solid rgba(201,125,0,.18);border-radius:6px;font-size:12px;color:var(--ink-2)}
+    .sidebar-note strong{display:block;color:var(--amber);margin-bottom:4px;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;font-family:'IBM Plex Mono',monospace}
+    .sidebar-note a{color:var(--cyan)}
+    .section-card{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:34px 38px;margin-bottom:10px;position:relative;overflow:hidden;transition:background .25s}
+    .section-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,var(--cyan),transparent 50%);opacity:.3}
+    .section-num{font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+    h2{font-family:'Syne',sans-serif;font-size:1.4rem;font-weight:700;color:var(--ink);margin-bottom:16px;letter-spacing:-.01em}
+    h3{font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--cyan);margin:22px 0 10px}
+    p{color:var(--ink-2);margin-bottom:14px;font-weight:300} p:last-child{margin-bottom:0}
+    ul{padding-left:0;list-style:none;margin-bottom:14px}
+    ul li{position:relative;padding:6px 0 6px 22px;color:var(--ink-2);font-size:14px;border-bottom:1px solid var(--line);font-weight:300}
+    ul li:last-child{border-bottom:none}
+    ul li::before{content:'';position:absolute;left:0;top:50%;transform:translateY(-50%);width:5px;height:5px;border-radius:50%;background:var(--muted)}
+    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:16px}
+    .grid-box{background:var(--bg-2);border:1px solid var(--line);border-radius:6px;padding:18px 20px;transition:background .25s}
+    .pill-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+    .pill{font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:500;letter-spacing:.10em;text-transform:uppercase;padding:4px 10px;border-radius:3px;background:var(--cyan-dim);color:var(--cyan);border:1px solid rgba(0,153,204,.18)}
+    .page-footer{border-top:1px solid var(--line);padding:32px 48px}
+    .footer-grid{max-width:var(--max);margin:0 auto 16px;display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:16px}
+    .footer-brand-name{font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;color:var(--ink)}
+    .footer-sub{font-size:12px;color:var(--muted);margin-top:3px}
+    .footer-links{display:flex;gap:20px}
+    .footer-links a{font-size:12.5px;color:var(--muted);transition:color .15s}
+    .footer-links a:hover{color:var(--cyan);text-decoration:none}
+    .footer-note{max-width:var(--max);margin:0 auto;font-size:12px;color:var(--muted);font-weight:300;line-height:1.6;font-style:italic}
+    @media(max-width:900px){.layout{grid-template-columns:1fr}.sidebar{position:static}.grid-2{grid-template-columns:1fr}}
+    @media(max-width:680px){nav{padding:0 20px}.nav-links{display:none}.page-hero{padding:100px 24px 48px}.wrap{padding:32px 24px 60px}.section-card{padding:24px 22px}.page-footer{padding:28px 24px}}
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-brand">
+      <div class="nav-logo"><svg viewBox="0 0 24 24"><path d="M12 2L3 7v5c0 5.25 3.75 10.15 9 11.35C17.25 22.15 21 17.25 21 12V7L12 2z"/></svg></div>
+      <span class="nav-name">SentryOne</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#features">Features</a></li>
+      <li><a href="help.html">Support</a></li>
+      <li><a href="legal.html" class="active">Legal</a></li>
+      <li><a href="terms.html">Terms</a></li>
+    </ul>
+    <div class="nav-cta">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle light/dark mode">
+        <svg class="icon-moon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      </button>
+      <a href="#" class="btn btn-ghost">Sign in</a>
+      <a href="#" class="btn btn-primary">Get started</a>
+    </div>
+  </nav>
+
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <div class="doc-tag">Legal Information</div>
+      <h1>Privacy & Legal</h1>
+      <p class="hero-sub">How SentryOne handles personal information, disclosure, security, and your rights as a customer — in plain language, under New Zealand law.</p>
+      <div class="meta-strip">
+        <div class="meta-item"><strong>Jurisdiction</strong>New Zealand</div>
+        <div class="meta-item"><strong>Effective</strong>2025</div>
+        <div class="meta-item"><strong>Applies to</strong>All SentryOne tenants</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="notice">This page is drafted for a New Zealand based service. If SentryOne expands into other jurisdictions, additional notices or regional terms may be required. This is not legal advice — consult a qualified adviser for your specific situation.</div>
+    <div class="layout">
+      <aside class="sidebar">
+        <div class="nav-label">// On this page</div>
+        <ul class="sidebar-nav">
+          <li><a href="#privacy">01 — Privacy notice</a></li>
+          <li><a href="#collection">02 — Information collected</a></li>
+          <li><a href="#use">03 — How it's used</a></li>
+          <li><a href="#sharing">04 — Disclosure & hosting</a></li>
+          <li><a href="#retention">05 — Security & retention</a></li>
+          <li><a href="#rights">06 — Access & correction</a></li>
+          <li><a href="#website">07 — Website & cookies</a></li>
+          <li><a href="#compliance">08 — Compliance & misuse</a></li>
+          <li><a href="#notices">09 — Legal notices</a></li>
+        </ul>
+        <div class="sidebar-note">
+          <strong>// Related</strong>
+          <a href="terms.html">Terms & Conditions →</a><br>
+          <a href="help.html">Help & Support →</a>
+        </div>
+      </aside>
+      <div class="content">
+        <section id="privacy"><div class="section-card"><div class="section-num">// Section 01</div><h2>Privacy notice</h2><p>SentryOne recognises that operational systems can contain sensitive information, including personal information about staff, guards, clients, contractors, visitors, and incident participants. SentryOne will handle personal information in accordance with applicable New Zealand law and its contractual obligations.</p><div class="pill-row"><span class="pill">Privacy-focused handling</span><span class="pill">Commercial SaaS context</span><span class="pill">Operational records</span><span class="pill">Reasonable security controls</span></div></div></section>
+
+        <section id="collection"><div class="section-card"><div class="section-num">// Section 02</div><h2>Information SentryOne may collect</h2><div class="grid-2"><div class="grid-box"><h3>Supplied directly</h3><ul><li>Account, billing, and contact details</li><li>Tenant, company, and site information</li><li>Uploaded documents, patrol logs, incidents, notes, photos, and attachments</li><li>Support requests, training requests, and correspondence</li></ul></div><div class="grid-box"><h3>Generated through use</h3><ul><li>Audit logs, access records, activity timestamps, and role changes</li><li>Device, browser, app, and session metadata</li><li>Performance, security, and troubleshooting telemetry</li><li>Report generation, notification, and workflow events</li></ul></div></div><p>SentryOne does not need users to submit more personal information than is reasonably required for service delivery, security, billing, support, lawful compliance, or agreed product functions.</p></div></section>
+
+        <section id="use"><div class="section-card"><div class="section-num">// Section 03</div><h2>How information may be used</h2><ul><li>To create and manage accounts, tenants, subscriptions, and permissions</li><li>To host, operate, secure, and improve the service</li><li>To generate reports, notifications, logs, and user-requested outputs</li><li>To detect fraud, misuse, unauthorised access, or platform abuse</li><li>To provide onboarding, support, maintenance, and service communications</li><li>To comply with legal obligations, lawful requests, and dispute processes</li></ul><p>SentryOne may also use de-identified and aggregated service information for analytics, capacity planning, product development, resilience testing, and quality improvement, provided those outputs do not reasonably identify a person or customer.</p></div></section>
+
+        <section id="sharing"><div class="section-card"><div class="section-num">// Section 04</div><h2>Disclosure, hosting partners, and subprocessors</h2><p>SentryOne may disclose or make information available to carefully selected third-party service providers where reasonably necessary to deliver the service. This can include hosting providers, email and notification services, analytics or monitoring providers, authentication services, storage providers, and technical support partners.</p><ul><li>Third parties are only given access to the extent reasonably necessary</li><li>Access is subject to contractual or operational safeguards where appropriate</li><li>Information may also be disclosed where required by law, court order, regulator direction, or urgent safety need</li></ul><p>If SentryOne becomes aware of unlawful misuse, credible threats, fraud, or incidents affecting system integrity, it may preserve and disclose relevant records to advisers, insurers, investigators, law enforcement, or regulators where reasonably necessary.</p></div></section>
+
+        <section id="retention"><div class="section-card"><div class="section-num">// Section 05</div><h2>Security, retention, and breach response</h2><p>SentryOne applies reasonable security controls appropriate to a commercial hosted platform. Those controls may include authentication controls, privilege management, monitoring, encrypted transport, environment separation, backups, logging, patching, and restricted administrative access.</p><h3>Retention</h3><p>Information is retained for as long as reasonably necessary for service delivery, legal compliance, dispute handling, fraud prevention, backup integrity, or agreed transition periods. Data may then be deleted, anonymised, or irreversibly de-identified.</p><h3>Privacy incidents</h3><p>If SentryOne identifies a material privacy or security incident affecting customer information, it will take reasonable steps to contain, assess, and respond to the incident, including notifying affected customers where appropriate and legally required.</p></div></section>
+
+        <section id="rights"><div class="section-card"><div class="section-num">// Section 06</div><h2>Access, correction, and account rights</h2><p>Where personal information is held by SentryOne in its own right, individuals may request access to or correction of that information through the relevant SentryOne contact channel.</p><p>Where SentryOne holds personal information only on behalf of a customer, SentryOne may direct the request to that customer or require the request to be made through the customer's own privacy contact, because the customer controls the operational record.</p><ul><li>Identity verification may be required before releasing information</li><li>Requests may be limited where lawful grounds for withholding apply</li><li>Correction requests may be recorded alongside the original record where appropriate</li></ul></div></section>
+
+        <section id="website"><div class="section-card"><div class="section-num">// Section 07</div><h2>Website use, cookies, and communications</h2><p>SentryOne's website may use cookies, local storage, analytics tags, or similar technologies for login continuity, preference storage, security, abuse prevention, traffic analysis, and performance monitoring.</p><ul><li>You can usually manage cookies through your browser settings</li><li>Blocking some technologies may affect login, forms, or core website functions</li><li>Operational service notices may still be sent where needed for account, billing, security, or support purposes</li></ul><p>Marketing or promotional communications should include an unsubscribe or opt-out method where required.</p></div></section>
+
+        <section id="compliance"><div class="section-card"><div class="section-num">// Section 08</div><h2>Compliance, misuse, and no legal guarantee</h2><p>SentryOne is designed to support security and operational workflows, but no software page, workflow, report, or automation can by itself guarantee legal compliance, evidential sufficiency, incident outcome, commercial success, or risk elimination.</p><p>Customers remain responsible for their own employment obligations, surveillance policies, records handling, contractual duties, site-specific rules, health and safety practices, and any decisions made based on information recorded in the platform.</p><p>SentryOne may revise this page from time to time to reflect platform updates, legal developments, risk management decisions, or operational changes.</p></div></section>
+
+        <section id="notices"><div class="section-card"><div class="section-num">// Section 09</div><h2>Legal notices and complaints</h2><p>Formal legal notices, takedown requests, infringement complaints, privacy requests, and authorised law-enforcement communications should be sent through SentryOne's designated official contact path or as otherwise stated in the applicable signed agreement.</p><p>When making a legal complaint or notice, include enough detail to identify the affected account, tenant, record, or content, together with the legal basis of the request and your authority to make it.</p><p style="color:var(--muted);font-size:13.5px">Related pages: <a href="terms.html">Terms and Conditions</a> and <a href="help.html">Help & Support</a>.</p></div></section>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <div class="footer-grid">
+      <div><div class="footer-brand-name">SentryOne</div><div class="footer-sub">Security & Operational Management Platform</div></div>
+      <div class="footer-links"><a href="index.html">Home</a><a href="terms.html">Terms & Conditions</a><a href="help.html">Help & Support</a></div>
+    </div>
+    <p class="footer-note">This page is a practical legal web page draft for SentryOne and should be checked against your final customer contracts, support commitments, hosting stack, and incident response workflow before publication.</p>
+  </div>
+
+  <script>
+    (function(){
+      var root=document.documentElement,btn=document.getElementById('themeToggle');
+      function get(){var s=localStorage.getItem('s1-theme');return s||(window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark')}
+      function apply(t){root.setAttribute('data-theme',t);localStorage.setItem('s1-theme',t)}
+      apply(get());
+      btn.addEventListener('click',function(){apply(root.getAttribute('data-theme')==='dark'?'light':'dark')});
+      window.matchMedia('(prefers-color-scheme: light)').addEventListener('change',function(e){if(!localStorage.getItem('s1-theme'))apply(e.matches?'light':'dark')});
+    })();
+  </script>
+</body>
+</html>
