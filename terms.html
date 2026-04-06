@@ -31,14 +31,22 @@
     body{font-family:'IBM Plex Sans',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.7;font-size:15px;overflow-x:hidden;transition:background .25s,color .25s}
     a{color:var(--cyan);text-decoration:none} a:hover{text-decoration:underline}
     body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 2px,var(--scanline) 2px,var(--scanline) 4px);pointer-events:none;z-index:9999}
-    nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:0 48px;height:60px;display:flex;align-items:center;justify-content:space-between;background:var(--nav-bg);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--line);transition:background .25s,border-color .25s}
+
+    /* Amber accent for progress bar on terms page */
+    #scroll-progress{position:fixed;top:0;left:0;height:2px;width:0%;background:linear-gradient(90deg,var(--amber),var(--cyan));z-index:9998;transition:width .1s linear}
+
+    nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:0 48px;height:60px;display:flex;align-items:center;justify-content:space-between;background:var(--nav-bg);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--line);transition:background .25s,border-color .25s,box-shadow .25s}
+    nav.scrolled{box-shadow:0 4px 32px rgba(0,0,0,0.3)}
     .nav-brand{display:flex;align-items:center;gap:11px}
-    .nav-logo{width:30px;height:30px;border:1px solid var(--cyan);border-radius:6px;display:flex;align-items:center;justify-content:center;box-shadow:0 0 10px var(--cyan-glow);flex-shrink:0}
+    .nav-logo{width:30px;height:30px;border:1px solid var(--cyan);border-radius:6px;display:flex;align-items:center;justify-content:center;box-shadow:0 0 10px var(--cyan-glow);flex-shrink:0;transition:box-shadow .2s}
+    .nav-logo:hover{box-shadow:0 0 20px var(--cyan-glow)}
     .nav-logo svg{width:16px;height:16px;fill:var(--cyan)}
     .nav-name{font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;color:var(--ink);letter-spacing:.04em}
     .nav-links{display:flex;align-items:center;gap:36px;list-style:none}
-    .nav-links a{font-size:12.5px;font-weight:500;color:var(--ink-2);letter-spacing:.04em;transition:color .15s}
-    .nav-links a:hover,.nav-links a.active{color:var(--cyan)}
+    .nav-links a{font-size:12.5px;font-weight:500;color:var(--ink-2);letter-spacing:.04em;transition:color .15s;position:relative}
+    .nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;right:0;height:1px;background:var(--cyan);transform:scaleX(0);transition:transform .2s}
+    .nav-links a:hover,.nav-links a.active{color:var(--cyan);text-decoration:none}
+    .nav-links a:hover::after,.nav-links a.active::after{transform:scaleX(1)}
     .nav-cta{display:flex;align-items:center;gap:10px}
     .theme-toggle{width:36px;height:36px;border-radius:6px;border:1px solid var(--line-2);background:transparent;color:var(--ink-2);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .18s;flex-shrink:0}
     .theme-toggle:hover{border-color:var(--cyan);color:var(--cyan)}
@@ -46,10 +54,10 @@
     .icon-moon{display:block}.icon-sun{display:none}
     [data-theme="light"] .icon-moon{display:none}[data-theme="light"] .icon-sun{display:block}
     .btn{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;font-weight:600;letter-spacing:.04em;padding:8px 20px;border-radius:4px;cursor:pointer;transition:all .18s;border:none;font-family:'IBM Plex Sans',sans-serif}
-    .btn-ghost{background:transparent;color:var(--ink-2);border:1px solid var(--line-2)}.btn-ghost:hover{border-color:var(--cyan);color:var(--cyan)}
+    .btn-ghost{background:transparent;color:var(--ink-2);border:1px solid var(--line-2)}.btn-ghost:hover{border-color:var(--cyan);color:var(--cyan);background:var(--cyan-dim)}
     .btn-primary{background:var(--cyan);color:#fff;box-shadow:0 0 20px var(--cyan-glow)}.btn-primary:hover{filter:brightness(1.1)}
 
-    /* Terms page uses amber as the accent colour for doc-tag / section top line */
+    /* Amber accent on hero for terms page */
     .page-hero{padding:110px 48px 64px;position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
     .page-hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(ellipse 90% 100% at 50% 50%,black 20%,transparent 80%);opacity:.5;transition:opacity .25s}
     [data-theme="light"] .page-hero::before{opacity:.25}
@@ -61,30 +69,43 @@
     .hero-sub{color:var(--ink-2);max-width:640px;font-size:15px;line-height:1.65;margin-bottom:28px;font-weight:300}
     .meta-strip{display:flex;flex-wrap:wrap;gap:28px}
     .meta-item{font-size:12px;color:var(--muted)}.meta-item strong{display:block;color:var(--ink-2);font-size:13px;margin-bottom:2px;font-weight:500}
+
     .wrap{max-width:var(--max);margin:0 auto;padding:48px 48px 80px}
     .layout{display:grid;grid-template-columns:240px minmax(0,1fr);gap:44px;align-items:start}
     .sidebar{position:sticky;top:80px}
     .nav-label{font-family:'IBM Plex Mono',monospace;font-size:9.5px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:12px;padding-left:2px}
     .sidebar-nav{list-style:none;border-left:1px solid var(--line-2)}
-    .sidebar-nav li a{display:block;padding:8px 16px;font-size:13px;color:var(--ink-2);border-left:2px solid transparent;margin-left:-1px;transition:all .15s;line-height:1.4;font-weight:400}
+    .sidebar-nav li a{display:block;padding:8px 16px;font-size:12.5px;color:var(--ink-2);border-left:2px solid transparent;margin-left:-1px;transition:all .15s;line-height:1.4;font-weight:400}
     .sidebar-nav li a:hover{color:var(--amber);border-left-color:var(--amber);background:var(--amber-dim);text-decoration:none}
+    .sidebar-nav li a.active{color:var(--amber);border-left-color:var(--amber);background:var(--amber-dim);font-weight:500}
     .sidebar-note{margin-top:24px;padding:14px 16px;background:var(--cyan-dim);border:1px solid rgba(0,153,204,.18);border-radius:6px;font-size:12px;color:var(--ink-2)}
     .sidebar-note strong{display:block;color:var(--cyan);margin-bottom:4px;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;font-family:'IBM Plex Mono',monospace}
     .sidebar-note a{color:var(--cyan)}
-    .section-card{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:34px 38px;margin-bottom:10px;position:relative;overflow:hidden;transition:background .25s}
-    .section-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,var(--amber),transparent 50%);opacity:.35}
+
+    /* Terms uses amber left border on cards */
+    .section-card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:36px 40px;margin-bottom:12px;position:relative;overflow:hidden;transition:background .25s,border-color .25s;opacity:0;transform:translateY(20px)}
+    .section-card.visible{opacity:1;transform:translateY(0);transition:opacity .5s ease,transform .5s ease,background .25s,border-color .25s}
+    .section-card::before{content:'';position:absolute;top:0;left:0;width:3px;bottom:0;background:linear-gradient(180deg,var(--amber),transparent);opacity:.4}
+    .section-card:hover{border-color:var(--line-2)}
     .section-num{font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
     h2{font-family:'Syne',sans-serif;font-size:1.4rem;font-weight:700;color:var(--ink);margin-bottom:16px;letter-spacing:-.01em}
     h3{font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--amber);margin:22px 0 10px}
     p{color:var(--ink-2);margin-bottom:14px;font-weight:300} p:last-child{margin-bottom:0}
     ul{padding-left:0;list-style:none;margin-bottom:14px}
-    ul li{position:relative;padding:6px 0 6px 22px;color:var(--ink-2);font-size:14px;border-bottom:1px solid var(--line);font-weight:300}
+    ul li{position:relative;padding:7px 0 7px 22px;color:var(--ink-2);font-size:14px;border-bottom:1px solid var(--line);font-weight:300;transition:color .15s}
     ul li:last-child{border-bottom:none}
-    ul li::before{content:'';position:absolute;left:0;top:50%;transform:translateY(-50%);width:5px;height:5px;border-radius:50%;background:var(--muted)}
+    ul li::before{content:'';position:absolute;left:0;top:50%;transform:translateY(-50%);width:5px;height:5px;border-radius:50%;background:var(--amber);opacity:.5}
+    ul li:hover{color:var(--ink)}
     ul li strong{color:var(--ink);font-weight:500}
     .tag-row{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
     .tag{font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:500;letter-spacing:.10em;text-transform:uppercase;padding:4px 10px;border-radius:3px;background:var(--red-dim);color:var(--red);border:1px solid rgba(214,50,80,.18)}
     .callout{background:var(--amber-dim);border:1px solid rgba(201,125,0,.2);border-left:3px solid var(--amber);border-radius:6px;padding:14px 18px;margin-top:16px;font-size:13.5px;color:var(--ink-2);line-height:1.6;font-weight:300}
+
+    #back-to-top{position:fixed;bottom:28px;right:28px;z-index:300;width:40px;height:40px;border-radius:8px;background:var(--surface);border:1px solid var(--line-2);color:var(--ink-2);cursor:pointer;display:flex;align-items:center;justify-content:center;opacity:0;transform:translateY(10px);transition:all .25s;pointer-events:none}
+    #back-to-top.visible{opacity:1;transform:translateY(0);pointer-events:auto}
+    #back-to-top:hover{border-color:var(--amber);color:var(--amber);background:var(--amber-dim)}
+    #back-to-top svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
     .page-footer{border-top:1px solid var(--line);padding:32px 48px}
     .footer-grid{max-width:var(--max);margin:0 auto 16px;display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:16px}
     .footer-brand-name{font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;color:var(--ink)}
@@ -93,16 +114,19 @@
     .footer-links a{font-size:12.5px;color:var(--muted);transition:color .15s}
     .footer-links a:hover{color:var(--cyan);text-decoration:none}
     .footer-note{max-width:var(--max);margin:0 auto;font-size:12px;color:var(--muted);font-weight:300;line-height:1.6;font-style:italic}
+
     @media(max-width:900px){.layout{grid-template-columns:1fr}.sidebar{position:static}}
-    @media(max-width:680px){nav{padding:0 20px}.nav-links{display:none}.page-hero{padding:100px 24px 48px}.wrap{padding:32px 24px 60px}.section-card{padding:24px 22px}.page-footer{padding:28px 24px}}
+    @media(max-width:680px){nav{padding:0 20px}.nav-links{display:none}.page-hero{padding:90px 24px 40px}.wrap{padding:32px 24px 60px}.section-card{padding:24px 22px}.page-footer{padding:28px 24px}}
   </style>
 </head>
 <body>
 
-  <nav>
+  <div id="scroll-progress"></div>
+
+  <nav id="mainNav">
     <div class="nav-brand">
-      <div class="nav-logo"><svg viewBox="0 0 24 24"><path d="M12 2L3 7v5c0 5.25 3.75 10.15 9 11.35C17.25 22.15 21 17.25 21 12V7L12 2z"/></svg></div>
-      <span class="nav-name">SentryOne</span>
+      <a href="index.html" class="nav-logo"><svg viewBox="0 0 24 24"><path d="M12 2L3 7v5c0 5.25 3.75 10.15 9 11.35C17.25 22.15 21 17.25 21 12V7L12 2z"/></svg></a>
+      <a href="index.html" class="nav-name" style="color:var(--ink)">SentryOne</a>
     </div>
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
@@ -138,20 +162,20 @@
     <div class="layout">
       <aside class="sidebar">
         <div class="nav-label">// On this page</div>
-        <ul class="sidebar-nav">
-          <li><a href="#agreement">01 — Agreement & scope</a></li>
-          <li><a href="#access">02 — Access & accounts</a></li>
-          <li><a href="#subscription">03 — Subscriptions & payment</a></li>
-          <li><a href="#data">04 — Customer data</a></li>
-          <li><a href="#obligations">05 — Customer obligations</a></li>
-          <li><a href="#acceptable-use">06 — Acceptable use</a></li>
-          <li><a href="#security">07 — Security & privacy</a></li>
-          <li><a href="#availability">08 — Availability & changes</a></li>
-          <li><a href="#ip">09 — Intellectual property</a></li>
-          <li><a href="#confidentiality">10 — Confidentiality</a></li>
-          <li><a href="#liability">11 — Liability</a></li>
-          <li><a href="#termination">12 — Termination & exit</a></li>
-          <li><a href="#general">13 — General terms</a></li>
+        <ul class="sidebar-nav" id="sidebarNav">
+          <li><a href="#agreement" data-section="agreement">01 — Agreement & scope</a></li>
+          <li><a href="#access" data-section="access">02 — Access & accounts</a></li>
+          <li><a href="#subscription" data-section="subscription">03 — Subscriptions & payment</a></li>
+          <li><a href="#data" data-section="data">04 — Customer data</a></li>
+          <li><a href="#obligations" data-section="obligations">05 — Customer obligations</a></li>
+          <li><a href="#acceptable-use" data-section="acceptable-use">06 — Acceptable use</a></li>
+          <li><a href="#security" data-section="security">07 — Security & privacy</a></li>
+          <li><a href="#availability" data-section="availability">08 — Availability & changes</a></li>
+          <li><a href="#ip" data-section="ip">09 — Intellectual property</a></li>
+          <li><a href="#confidentiality" data-section="confidentiality">10 — Confidentiality</a></li>
+          <li><a href="#liability" data-section="liability">11 — Liability</a></li>
+          <li><a href="#termination" data-section="termination">12 — Termination & exit</a></li>
+          <li><a href="#general" data-section="general">13 — General terms</a></li>
         </ul>
         <div class="sidebar-note">
           <strong>// Related</strong>
@@ -189,6 +213,10 @@
     </div>
   </div>
 
+  <button id="back-to-top" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+    <svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"></polyline></svg>
+  </button>
+
   <div class="page-footer">
     <div class="footer-grid">
       <div><div class="footer-brand-name">SentryOne</div><div class="footer-sub">Security & Operational Management Platform</div></div>
@@ -205,6 +233,18 @@
       apply(get());
       btn.addEventListener('click',function(){apply(root.getAttribute('data-theme')==='dark'?'light':'dark')});
       window.matchMedia('(prefers-color-scheme: light)').addEventListener('change',function(e){if(!localStorage.getItem('s1-theme'))apply(e.matches?'light':'dark')});
+
+      var prog=document.getElementById('scroll-progress'),nav=document.getElementById('mainNav'),btt=document.getElementById('back-to-top');
+      function onScroll(){var d=document.documentElement,pct=(d.scrollTop/(d.scrollHeight-d.clientHeight))*100;prog.style.width=pct+'%';nav.classList.toggle('scrolled',d.scrollTop>40);btt.classList.toggle('visible',d.scrollTop>400);}
+      window.addEventListener('scroll',onScroll,{passive:true});
+
+      var cards=document.querySelectorAll('.section-card');
+      var co=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting)setTimeout(function(){e.target.classList.add('visible')},60)});},{threshold:.08});
+      cards.forEach(function(c){co.observe(c)});
+
+      var sections=document.querySelectorAll('.content section[id]'),links=document.querySelectorAll('#sidebarNav a[data-section]');
+      var so=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){links.forEach(function(l){l.classList.remove('active')});var a=document.querySelector('#sidebarNav a[data-section="'+e.target.id+'"]');if(a)a.classList.add('active')}});},{rootMargin:'-10% 0px -70% 0px'});
+      sections.forEach(function(s){so.observe(s)});
     })();
   </script>
 </body>
